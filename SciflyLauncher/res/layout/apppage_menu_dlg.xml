@@ -1,0 +1,56 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <FrameLayout
+        android:layout_width="@dimen/apppage_menu_width"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:alpha="0.5"
+            android:background="@color/black"
+            android:orientation="vertical" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/apppage_menu_title_height"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/menu_icon_margin_left_top"
+                    android:layout_marginRight="@dimen/menu_icon_margin_right"
+                    android:layout_marginTop="@dimen/menu_icon_margin_left_top"
+                    android:src="@drawable/menu_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingTop="@dimen/menu_txt_margin_top"
+                    android:text="@string/menu"
+                    android:textColor="#00FF00"
+                    android:textSize="@dimen/menu_txt_size" />
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/apppage_menu_lv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="#00000000"
+                android:dividerHeight="46px"
+                android:listSelector="#30D230" />
+        </LinearLayout>
+    </FrameLayout>
+
+</RelativeLayout>

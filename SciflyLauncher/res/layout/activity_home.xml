@@ -1,0 +1,62 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/logo_image"
+        android:layout_width="309dp"
+        android:layout_height="37dp"
+        android:scaleType="fitXY"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="20dp"
+        android:visibility="gone"
+        tools:ignore="ContentDescription" />
+    
+    
+    
+    <GridView
+        android:id="@+id/title_grid"
+        android:layout_width="@dimen/grid_view_width"
+        android:layout_height="@dimen/grid_view_height"
+        android:layout_marginLeft="@dimen/grid_view_margin_left"
+        android:layout_marginTop="@dimen/grid_view_margin_top"
+        android:listSelector="@color/transparent"
+        android:numColumns="@integer/grid_view_num_columns"
+        android:scrollbars="none"
+        android:stretchMode="columnWidth"
+        android:visibility="visible" />
+
+    <com.eostek.tv.launcher.ui.view.WeatherView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/weatherview_margin_top"
+        android:layout_marginRight="@dimen/weatherview_margin_right"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true" />
+    
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/title_grid"
+        android:layout_marginTop="@dimen/View_pager_margin_top" />
+
+    <com.eostek.tv.launcher.ui.view.FocusView
+        android:id="@+id/focusview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/home_focus"
+        android:visibility="gone" />
+
+<ImageView
+        android:id="@+id/left_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="6dp"
+        android:layout_centerVertical="true"
+        android:src="@drawable/left_image"/>
+
+</RelativeLayout>
