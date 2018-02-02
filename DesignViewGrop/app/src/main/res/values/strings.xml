@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">小酷影视</string>
+    <string name="tips">点击图片右上角小图标可进行更多有趣操作哦,喵</string>
+    <string name="menu_search">搜索</string>
+    <string name="menu_notifications">提醒</string>
+    <string name="item_01">设置</string>
+    <string name="item_02">关于</string>
+    <string name="item_03">delete</string>
+    <string name="activityone">Activity One</string>
+    <string name="viewpageractivity">viewpager activity</string>
+    <string name="videoactivity">video activity</string>
+    <string name="webview">webview</string>
+    <string name="iconactivity">icon activity</string>
+    <string name="startplay">start play</string>
+    <string name="w3">delete</string>
+
+</resources>
