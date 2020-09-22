@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.Menu;
 import android.widget.Toast;
 
+import com.example.gitdemo.db.PlaceDBHelper;
 import com.example.gitdemo.utils.HttpUtil;
 import com.example.gitdemo.utils.Utility;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -71,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+        //http://www.baidu.com http://guolin.tech/api/china
         HttpUtil.sendOkHttpRequest("http://guolin.tech/api/china", new Callback() {
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
@@ -96,6 +98,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        initDB();
+    }
+
+    private PlaceDBHelper mHelper;
+
+    private void initDB(){
+        mHelper = new PlaceDBHelper(this,"place.db", null,1);
+        Utility.createWriteableDB(this,mHelper);
     }
 
     private void checkPermisson(){
