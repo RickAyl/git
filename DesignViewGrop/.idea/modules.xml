@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/DesignViewGrop.iml" filepath="$PROJECT_DIR$/DesignViewGrop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_91QServer/_91QServer.iml" filepath="$PROJECT_DIR$/_91QServer/_91QServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/universalimageloader/universalimageloader.iml" filepath="$PROJECT_DIR$/universalimageloader/universalimageloader.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vitamio/vitamio.iml" filepath="$PROJECT_DIR$/vitamio/vitamio.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vitamio-sample/vitamio-sample.iml" filepath="$PROJECT_DIR$/vitamio-sample/vitamio-sample.iml" />
+    </modules>
+  </component>
+</project>

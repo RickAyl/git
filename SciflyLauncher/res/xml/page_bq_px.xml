@@ -1,0 +1,258 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes'?>
+<MetroPageList>
+  <MetroPage title="hide" appCategory="0">
+      <MetroInfo id="1" title="电视剧" appCategory="0" positionX="0" positionY="0" widthSize="688" heightSize="348">
+      <typeTitle>hide</typeTitle>
+      <clsName>com.i91q.video.videolist.VideoList2Activity</clsName>
+      <pkgName>com.i91q.video</pkgName>
+      <itemType>1</itemType>
+      <iconPath>ent_teleplay.png</iconPath>
+      <apkUrl></apkUrl>
+      <videoFlg>0</videoFlg>
+      <StrFlg>tvSeries</StrFlg>
+      <IconPathF></IconPathF>
+      <net>0</net>
+    </MetroInfo>
+      <MetroInfo id="2" title="电影" appCategory="0" positionX="0" positionY="356" widthSize="340" heightSize="170">
+      <typeTitle>hide</typeTitle>
+      <clsName>com.i91q.video.videolist.VideoList2Activity</clsName>
+      <pkgName>com.i91q.video</pkgName>
+      <itemType>1</itemType>
+      <iconPath>ent_movie.png</iconPath>
+      <apkUrl></apkUrl>
+      <videoFlg>0</videoFlg>
+      <StrFlg>movie</StrFlg>
+      <IconPathF></IconPathF>
+      <net>0</net>
+    </MetroInfo>
+      <MetroInfo id="3" title="动漫" appCategory="0" positionX="348" positionY="356" widthSize="340" heightSize="170">
+      <typeTitle>hide</typeTitle>
+      <clsName>com.i91q.video.videolist.VideoList2Activity</clsName>
+      <pkgName>com.i91q.video</pkgName>
+      <itemType>1</itemType>
+      <iconPath>ent_cartoon.png</iconPath>
+      <apkUrl></apkUrl>
+      <videoFlg>0</videoFlg>
+      <StrFlg>cartoon</StrFlg>
+      <IconPathF></IconPathF>
+      <net>0</net>
+    </MetroInfo>
+
+    <MetroInfo id="4" title="pluto" appCategory="0" positionX="752" positionY="0" widthSize="259" heightSize="259">
+      <typeTitle>hide</typeTitle>
+      <clsName>tv.pluto.android.controller.LauncherActivity</clsName>
+      <pkgName>tv.pluto.android</pkgName>
+      <itemType>1</itemType>
+      <iconPath>chanel_pluto.png</iconPath>
+      <apkUrl></apkUrl>
+      <videoFlg>0</videoFlg>
+      <StrFlg></StrFlg>
+      <IconPathF></IconPathF>
+      <net>0</net>
+    </MetroInfo>
+    <MetroInfo id="5" title="ted" appCategory="0" positionX="752" positionY="267" widthSize="259" heightSize="259">
+      <typeTitle>hide</typeTitle>
+      <clsName>com.ted.android.view.activity.SplashScreenActivity</clsName>
+      <pkgName>com.ted.android</pkgName>
+      <itemType>1</itemType>
+      <iconPath>chanel_ted.png</iconPath>
+      <apkUrl></apkUrl>
+      <videoFlg>0</videoFlg>
+      <StrFlg></StrFlg>
+      <IconPathF></IconPathF>
+      <net>0</net>
+    </MetroInfo>
+    <MetroInfo id="6" title="plex" appCategory="0" positionX="1019" positionY="0" widthSize="259" heightSize="259">
+      <typeTitle>hide</typeTitle>
+      <clsName>com.plexapp.plex.activities.MyPlexActivity</clsName>
+      <pkgName>com.plexapp.android</pkgName>
+      <itemType>1</itemType>
+      <iconPath>chanel_plex.png</iconPath>
+      <apkUrl></apkUrl>
+      <videoFlg>0</videoFlg>
+      <StrFlg></StrFlg>
+      <IconPathF></IconPathF>
+       <net>0</net>
+    </MetroInfo>
+    <MetroInfo id="7" title="viewster" appCategory="0" positionX="1019" positionY="267" widthSize="259" heightSize="259">
+      <typeTitle>hide</typeTitle>
+      <clsName>com.viewster.android.activity.StartActivity</clsName>
+      <pkgName>com.viewster.androidapp</pkgName>
+      <itemType>1</itemType>
+      <iconPath>chanel_viewster.png</iconPath>
+      <apkUrl></apkUrl>
+      <videoFlg>0</videoFlg>
+      <StrFlg></StrFlg>
+      <IconPathF></IconPathF>
+       <net>0</net>
+    </MetroInfo>
+    <MetroInfo id="8" title="daileymotion" appCategory="0" positionX="1286" positionY="0" widthSize="259" heightSize="259">
+      <typeTitle>hide</typeTitle>
+      <clsName>com.dailymotion.dailymotion.activity.InterstitialActivity</clsName>
+      <pkgName>com.dailymotion.dailymotion</pkgName>
+      <itemType>1</itemType>
+      <iconPath>chanel_dailymotion.png</iconPath>
+      <apkUrl></apkUrl>
+      <videoFlg>0</videoFlg>
+      <StrFlg></StrFlg>
+      <IconPathF></IconPathF>
+       <net>0</net>
+    </MetroInfo>
+    <MetroInfo id="9" title="vimeo" appCategory="0" positionX="1286" positionY="267" widthSize="259" heightSize="259">
+      <typeTitle>hide</typeTitle>
+      <clsName>com.vimeo.android.lib.model.VimeoActivity</clsName>
+      <pkgName>com.vimeo.android.videoapp</pkgName>
+      <itemType>1</itemType>
+      <iconPath>chanel_vimeo.png</iconPath>
+      <apkUrl></apkUrl>
+      <videoFlg>0</videoFlg>
+      <StrFlg></StrFlg>
+      <IconPathF></IconPathF>
+       <net>0</net>
+    </MetroInfo>
+    
+    <MetroInfo id="10" title="cloudAlbum" appCategory="0" positionX="1553" positionY="0" widthSize="259" heightSize="259">
+      <typeTitle>hide</typeTitle>
+      <clsName>com.eostek.scifly.album.AlbumActivity</clsName>
+      <pkgName>com.eostek.scifly.album</pkgName>
+      <itemType>1</itemType>
+      <iconPath>en_cloud_album.png</iconPath>
+      <apkUrl></apkUrl>
+      <videoFlg>0</videoFlg>
+      <StrFlg></StrFlg>
+      <IconPathF></IconPathF>
+       <net>0</net>
+    </MetroInfo>
+    
+    <MetroInfo id="11" title="downloadManager" appCategory="0" positionX="1553" positionY="267" widthSize="259" heightSize="259">
+      <typeTitle>hide</typeTitle>
+      <clsName>com.eostek.documentui.DocumentsActivity</clsName>
+      <pkgName>com.eostek.documentui</pkgName>
+      <itemType>1</itemType>
+      <iconPath>en_downloads.png</iconPath>
+      <apkUrl></apkUrl>
+      <videoFlg>0</videoFlg>
+      <StrFlg></StrFlg>
+      <IconPathF></IconPathF>
+       <net>0</net>
+    </MetroInfo>
+    
+    <MetroInfo id="12" title="browser" appCategory="0" positionX="1820" positionY="0" widthSize="259" heightSize="259">
+      <typeTitle>hide</typeTitle>
+      <clsName>com.eostek.scifly.browser.BrowserActivity</clsName>
+      <pkgName>com.eostek.scifly.browser</pkgName>
+      <itemType>1</itemType>
+      <iconPath>en_browser.png</iconPath>
+      <apkUrl></apkUrl>
+      <videoFlg>0</videoFlg>
+      <StrFlg></StrFlg>
+      <IconPathF></IconPathF>
+       <net>0</net>
+    </MetroInfo>
+    
+    <MetroInfo id="13" title="deviceManager" appCategory="0" positionX="1820" positionY="267" widthSize="259" heightSize="259">
+      <typeTitle>hide</typeTitle>
+      <clsName>com.eostek.scifly.devicemanager.DeviceManagerActivity</clsName>
+      <pkgName>com.eostek.scifly.devicemanager</pkgName>
+      <itemType>1</itemType>
+      <iconPath>en_device_manager.png</iconPath>
+      <apkUrl></apkUrl>
+      <videoFlg>0</videoFlg>
+      <StrFlg></StrFlg>
+      <IconPathF></IconPathF>
+       <net>0</net>
+    </MetroInfo>
+    
+    <MetroInfo id="14" title="multiScreen" appCategory="0" positionX="2087" positionY="0" widthSize="259" heightSize="259">
+      <typeTitle>hide</typeTitle>
+      <clsName>com.biaoqi.filefly.STBFileFlyMainActivity</clsName>
+      <pkgName>com.biaoqi.filefly</pkgName>
+      <itemType>1</itemType>
+      <iconPath>en_multi_screen.png</iconPath>
+      <apkUrl></apkUrl>
+      <videoFlg>0</videoFlg>
+      <StrFlg></StrFlg>
+      <IconPathF></IconPathF>
+       <net>0</net>
+    </MetroInfo>
+    
+    <MetroInfo id="15" title="officeCache" appCategory="0" positionX="2087" positionY="267" widthSize="259" heightSize="259">
+      <typeTitle>hide</typeTitle>
+      <clsName>com.eostek.scifly.video.download.DownloadVideoListActivity</clsName>
+      <pkgName>com.eostek.scifly.video</pkgName>
+      <itemType>1</itemType>
+      <iconPath>en_office_cache.png</iconPath>
+      <apkUrl></apkUrl>
+      <videoFlg>0</videoFlg>
+      <StrFlg></StrFlg>
+      <IconPathF></IconPathF>
+       <net>0</net>
+    </MetroInfo>
+
+    <MetroInfo id="16" title="appMarket" appCategory="0" positionX="2410" positionY="0" widthSize="526" heightSize="170">
+      <typeTitle>hide</typeTitle>
+      <clsName>com.jrm.babao.babaofan.activity.main.BabaofanMainActivity</clsName>
+      <pkgName>com.jrm.babao.babaofan</pkgName>
+      <itemType>1</itemType>
+      <iconPath>rcm_market.png</iconPath>
+      <apkUrl></apkUrl>
+      <videoFlg>0</videoFlg>
+      <StrFlg></StrFlg>
+      <IconPathF></IconPathF>
+       <net>0</net>
+    </MetroInfo>
+    
+    <MetroInfo id="17" title="MediaPlayer" appCategory="0" positionX="2410" positionY="178" widthSize="526" heightSize="170">
+      <typeTitle>hide</typeTitle>
+      <clsName>com.eostek.mediabrowser.MainActivity</clsName>
+      <pkgName>com.eostek.mediabrowser</pkgName>
+      <itemType>1</itemType>
+      <iconPath>ent_mb.png</iconPath>
+      <apkUrl></apkUrl>
+      <videoFlg>0</videoFlg>
+      <StrFlg></StrFlg>
+      <IconPathF></IconPathF>
+       <net>0</net>
+    </MetroInfo>
+
+    <MetroInfo id="18" title="Settings" appCategory="0" positionX="2410" positionY="356" widthSize="170" heightSize="170">
+      <typeTitle>hide</typeTitle>
+      <clsName>com.android.settings.SettingsActivity</clsName>
+      <pkgName>com.android.settings</pkgName>
+      <itemType>1</itemType>
+      <iconPath>rcm_settings.png</iconPath>
+      <apkUrl></apkUrl>
+      <videoFlg>0</videoFlg>
+      <StrFlg></StrFlg>
+      <IconPathF></IconPathF>
+       <net>0</net>
+    </MetroInfo>
+
+    <MetroInfo id="19" title="AllApp" appCategory="0" positionX="2588" positionY="356" widthSize="170" heightSize="170">
+      <typeTitle>hide</typeTitle>
+      <clsName>com.eostek.tv.launcher.ui.AllAppActivity</clsName>
+      <pkgName>com.eostek.tv.launcher</pkgName>
+      <itemType>1</itemType>
+      <iconPath>rcm_allapp.png</iconPath>
+      <apkUrl></apkUrl>
+      <videoFlg>0</videoFlg>
+      <StrFlg></StrFlg>
+      <IconPathF></IconPathF>
+       <net>0</net>
+    </MetroInfo>
+
+    <MetroInfo id="20" title="EsFiles" appCategory="0" positionX="2766" positionY="356" widthSize="170" heightSize="170">
+      <typeTitle>hide</typeTitle>
+      <clsName>com.fb.FileBrower.FileBrower</clsName>
+      <pkgName>com.fb.FileBrower</pkgName>
+      <itemType>1</itemType>
+      <iconPath>rcm_esfile.png</iconPath>
+      <apkUrl></apkUrl>
+      <videoFlg>0</videoFlg>
+      <StrFlg></StrFlg>
+      <IconPathF></IconPathF>
+      <net>0</net>
+    </MetroInfo>
+    
+  </MetroPage>
+</MetroPageList>

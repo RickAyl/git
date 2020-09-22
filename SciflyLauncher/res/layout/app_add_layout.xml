@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/appdlg_width"
+    android:layout_height="@dimen/appdlg_height"
+    android:background="@drawable/bg_allapp_dlg"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/appdlg_tv_height"
+        android:layout_marginLeft="@dimen/appdlg_tv_margin_left"
+        android:gravity="left|center"
+        android:text="@string/allapp"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/app_item_apptitle_textSize" />
+
+    <GridView
+        android:id="@+id/app_add_gridview"
+        android:layout_width="@dimen/appdlg_gridview_width"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/appdlg_gridview_margin_rifht"
+        android:layout_marginRight="@dimen/appdlg_gridview_margin_rifht"
+        android:gravity="center"
+        android:horizontalSpacing="@dimen/appdlg_gridview_horizontalSpacing"
+        android:listSelector="@drawable/imagebutton_focus_border"
+        android:numColumns="6"
+        android:scrollbars="vertical"
+        android:verticalSpacing="@dimen/appdlg_gridview_verticalSpacing" />
+
+</LinearLayout>

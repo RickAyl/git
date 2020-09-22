@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes'?>
+<MetroPageList>
+ <MetroPage title="应用" appCategory="1">
+    <!-- <MetroInfo id="21" title="addDialog" appCategory="0" positionX="2944" positionY="0" widthSize="170" heightSize="170">
+      <typeTitle>hide</typeTitle>
+      <clsName>com.eostek.tv.launcher.ui.view.AppAddActivity</clsName>
+      <pkgName>com.eostek.tv.launcher</pkgName>
+      <itemType>1</itemType>
+      <iconPath>first_add_icon.png</iconPath>
+      <apkUrl></apkUrl>
+      <videoFlg>0</videoFlg>
+      <StrFlg></StrFlg>
+      <IconPathF></IconPathF>
+      <net>0</net>
+      <MoveType>1</MoveType>
+      <hide>0</hide>
+      <positionID>1</positionID>
+    </MetroInfo> -->
+  </MetroPage>
+</MetroPageList>

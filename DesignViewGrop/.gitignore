@@ -1,0 +1,12 @@
+*.iml
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+/_91QServer
+/universalimageload
+/vitamio*
+.DS_Store
+/build
+/captures
+.externalNativeBuild
