@@ -24,7 +24,7 @@ public class Utility {
         return helper.getWritableDatabase();
     }
 
-    public static boolean handleProviceResponse(String response){
+    public static boolean handleProviceResponse(String response, HandleCallBack callBack){
         Log.d(MainActivity.TAG,"response : " + response);
        if(!TextUtils.isEmpty(response)){
            Gson gson = new Gson();
@@ -32,13 +32,39 @@ public class Utility {
                List<Province> provinces = gson.fromJson(response,new TypeToken<List<Province>>(){}.getType());
                for (int i = 0; i < provinces.size(); i++) {
                    Log.d(MainActivity.TAG,"城市" + provinces.get(i).getProvinceCode() + ":" + provinces.get(i).getProvinceName());
+                   if (callBack != null){
+                       callBack.onFinished(provinces);
+                   }
                }
+               return true;
            } catch (Exception e) {
-               e.printStackTrace();
+               callBack.onError(e);
            }
 
        }
         return false;
+    }
+
+    /*
+    [{"id":113,"name":"南京"},{"id":114,"name":"无锡"},{"id":115,"name":"镇江"},
+    {"id":116,"name":"苏州"},{"id":117,"name":"南通"},{"id":118,"name":"扬州"},
+    {"id":119,"name":"盐城"},{"id":120,"name":"徐州"},{"id":121,"name":"淮安"},
+    {"id":122,"name":"连云港"},{"id":123,"name":"常州"},{"id":124,"name":"泰州"},
+    {"id":125,"name":"宿迁"}]
+     */
+
+    public static boolean handleCityResponse(String response, HandleCallBack callBack){
+        return false;
+    }
+
+    public static boolean handleCountryResponse(String response, HandleCallBack callBack){
+        return false;
+    }
+
+
+    public static interface HandleCallBack<E> {
+        void onFinished(List<E> list);
+        void onError(Exception e);
     }
 
 

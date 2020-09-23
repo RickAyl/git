@@ -1,17 +1,18 @@
 package com.example.gitdemo;
 
 import android.Manifest;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.IBinder;
 import android.view.View;
 import android.view.Menu;
 import android.widget.Toast;
 
-import com.example.gitdemo.db.PlaceDBHelper;
-import com.example.gitdemo.utils.HttpUtil;
-import com.example.gitdemo.utils.Utility;
+import com.example.gitdemo.service.MainService;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -26,16 +27,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        checkPermisson();
+        checkBasePermisson();
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,43 +67,43 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        //http://www.baidu.com http://guolin.tech/api/china
-        HttpUtil.sendOkHttpRequest("http://guolin.tech/api/china", new Callback() {
-            @Override
-            public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(MainActivity.this,"请求失败！",Toast.LENGTH_SHORT).show();
-                    }
-                });
-                e.printStackTrace();
-            }
-
-            @Override
-            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(MainActivity.this,"请求成功！",Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-                Utility.handleProviceResponse(response.body().string());
-            }
-        });
-
-        initDB();
     }
 
-    private PlaceDBHelper mHelper;
-
-    private void initDB(){
-        mHelper = new PlaceDBHelper(this,"place.db", null,1);
-        Utility.createWriteableDB(this,mHelper);
+    @Override
+    protected void onStart() {
+        super.onStart();
+        bindMainService();
     }
 
-    private void checkPermisson(){
+    @Override
+    protected void onStop() {
+        super.onStop();
+        unBindMainService();
+    }
+
+    private void bindMainService(){
+        Intent intent = new Intent(this, MainService.class);
+        bindService(intent, connection, BIND_AUTO_CREATE);
+    }
+
+    private ServiceConnection connection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+
+        }
+    };
+
+    private void unBindMainService(){
+        unbindService(connection);
+    }
+
+
+    private void checkBasePermisson(){
         if(ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
             != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);

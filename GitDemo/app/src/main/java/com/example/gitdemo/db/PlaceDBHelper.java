@@ -9,18 +9,18 @@ import androidx.annotation.Nullable;
 public class PlaceDBHelper extends SQLiteOpenHelper {
 
     public static final String CREATE_PROVICE_TABLE = "create table province ("
-                                                    + "id integer primary key autoincrement, "
+                                                    + "_id integer primary key autoincrement, "
                                                     + "province_name text, "
-                                                    + "province_code text)";
+                                                    + "province_code integer)";
 
     public static final String CREATE_CITY_TABLE = "create table city ("
-                                                 + "id integer primary key autoincrement, "
+                                                 + "_id integer primary key autoincrement, "
                                                  + "city_name text, "
                                                  + "city_code text, "
                                                  + "province_id integer)";
 
     public static final String CREATE_COUNTRY_TABLE = "create table country ("
-            + "id integer primary key autoincrement, "
+            + "_id integer primary key autoincrement, "
             + "country_name text, "
             + "weather_id text, "
             + "city_id integer)";
@@ -38,6 +38,6 @@ public class PlaceDBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
+        //update db
     }
 }
