@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.example.gitdemo.MainActivity;
+import com.example.gitdemo.bean.City;
 import com.example.gitdemo.bean.Province;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -31,10 +32,10 @@ public class Utility {
            try {
                List<Province> provinces = gson.fromJson(response,new TypeToken<List<Province>>(){}.getType());
                for (int i = 0; i < provinces.size(); i++) {
-                   Log.d(MainActivity.TAG,"城市" + provinces.get(i).getProvinceCode() + ":" + provinces.get(i).getProvinceName());
-                   if (callBack != null){
-                       callBack.onFinished(provinces);
-                   }
+                   Log.d(MainActivity.TAG,"省份" + provinces.get(i).getProvinceCode() + ":" + provinces.get(i).getProvinceName());
+               }
+               if (callBack != null){
+                   callBack.onFinished(provinces);
                }
                return true;
            } catch (Exception e) {
@@ -53,9 +54,29 @@ public class Utility {
     {"id":125,"name":"宿迁"}]
      */
 
-    public static boolean handleCityResponse(String response, HandleCallBack callBack){
+    public static boolean handleCityResponse(String response, HandleCallBack callBack, int provinceCode){
+        Log.d(MainActivity.TAG,"city response : " + response);
+        if(!TextUtils.isEmpty(response)){
+            Gson gson = new Gson();
+            try {
+                List<City> cities = gson.fromJson(response,new TypeToken<List<City>>(){}.getType());
+                for (int i = 0; i < cities.size(); i++) {
+                    Log.d(MainActivity.TAG,"城市" + cities.get(i).getCityCode() + ":" + cities.get(i).getCityName());
+                    cities.get(i).setProvinceId(provinceCode);
+                }
+                if (callBack != null){
+                    callBack.onFinished(cities);
+                }
+                return true;
+            } catch (Exception e) {
+                callBack.onError(e);
+            }
+
+        }
         return false;
     }
+
+
 
     public static boolean handleCountryResponse(String response, HandleCallBack callBack){
         return false;

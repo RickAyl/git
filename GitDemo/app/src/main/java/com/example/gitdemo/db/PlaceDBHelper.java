@@ -16,7 +16,7 @@ public class PlaceDBHelper extends SQLiteOpenHelper {
     public static final String CREATE_CITY_TABLE = "create table city ("
                                                  + "_id integer primary key autoincrement, "
                                                  + "city_name text, "
-                                                 + "city_code text, "
+                                                 + "city_code integer, "
                                                  + "province_id integer)";
 
     public static final String CREATE_COUNTRY_TABLE = "create table country ("

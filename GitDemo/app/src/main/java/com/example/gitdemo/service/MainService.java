@@ -2,7 +2,9 @@ package com.example.gitdemo.service;
 
 import android.app.Service;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Binder;
 import android.os.Handler;
 import android.os.IBinder;
@@ -12,7 +14,6 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.example.gitdemo.bean.Province;
-import com.example.gitdemo.db.PlaceDBHelper;
 import com.example.gitdemo.utils.HttpUtil;
 import com.example.gitdemo.utils.SimpleDBUtils;
 import com.example.gitdemo.utils.Utility;
@@ -33,23 +34,36 @@ public class MainService extends Service {
 
     private static final boolean DBUG = true;
 
-    private Handler mHandler = null;
+    private static Context mService;
+
+    private static Handler mHandler = null;
 
     private void initHandler(){
         mHandler = new Handler(getMainLooper()){
             @Override
             public void handleMessage(@NonNull Message msg) {
                 super.handleMessage(msg);
+                switch (msg.what) {
+                    case 0:
+                        break;
+                }
             }
         };
     }
 
-    public MainService() {
+    public static Context getService() {
+        return mService;
     }
+
+    public static Handler getMainHandler() {
+        return mHandler;
+    }
+
 
     @Override
     public void onCreate() {
         super.onCreate();
+        mService = this;
         initHandler();
         mainServiceLog("onCreate");
     }
@@ -57,7 +71,7 @@ public class MainService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         mainServiceLog("onStartCommand");
-        mSimpleDBUtils = SimpleDBUtils.getInstance(this);
+        mSimpleDBUtils = SimpleDBUtils.getInstance();
         requestInternet();
         return super.onStartCommand(intent, flags, startId);
     }
@@ -65,14 +79,16 @@ public class MainService extends Service {
     @Override
     public IBinder onBind(Intent intent) {
         mainServiceLog("onBind");
-        mSimpleDBUtils = SimpleDBUtils.getInstance(this);
+        mSimpleDBUtils = SimpleDBUtils.getInstance();
         mBinder = new MyBinder();
         requestInternet();
         return mBinder;
     }
 
     private MyBinder mBinder;
+
     public class MyBinder extends Binder{
+
         public void onDBFininshed(){
 
         }
@@ -81,6 +97,7 @@ public class MainService extends Service {
     @Override
     public boolean onUnbind(Intent intent) {
         mainServiceLog("onUnbind");
+        mBinder = null;
         return super.onUnbind(intent);
     }
 
@@ -90,10 +107,15 @@ public class MainService extends Service {
         super.onRebind(intent);
     }
 
+    public boolean isActive() {
+        return mService != null;
+    }
+
     @Override
     public void onDestroy() {
-        super.onDestroy();
         mainServiceLog("onDestroy");
+        mService = null;
+        super.onDestroy();
     }
 
     private void mainServiceLog(String msg){
@@ -101,7 +123,7 @@ public class MainService extends Service {
             Log.d(TAG, msg);
     }
 
-    SimpleDBUtils mSimpleDBUtils = null;
+    private SimpleDBUtils mSimpleDBUtils = null;
 
 
     private void requestInternet(){
@@ -127,11 +149,14 @@ public class MainService extends Service {
                             if(hasData){
                                 values.put("province_name",province.getProvinceName());
                                 values.put("province_code",province.getProvinceCode());
-                                mSimpleDBUtils.updateData(values,"province","province_code = ?",new String[]{String.valueOf(province.getProvinceCode())} );
+                                getContentResolver().update(Uri.parse("content://com.example.gitdemo.provider/province"),
+                                        values, "province_code = ?",new String[]{String.valueOf(province.getProvinceCode())});
+                                //mSimpleDBUtils.updateData(values,"province","province_code = ?",new String[]{String.valueOf(province.getProvinceCode())} );
                             }else {
                                 values.put("province_name",province.getProvinceName());
                                 values.put("province_code",province.getProvinceCode());
-                                mSimpleDBUtils.insertData(values, "province");
+                                getContentResolver().insert(Uri.parse("content://com.example.gitdemo.provider/province"), values);
+                                //mSimpleDBUtils.insertData(values, "province");
                             }
                         }
                     }

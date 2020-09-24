@@ -23,11 +23,11 @@ public class SimpleDBUtils {
 
     private static SimpleDBUtils sInstance;
 
-    public static SimpleDBUtils getInstance(Context context){
+    public static SimpleDBUtils getInstance(){
         if (sInstance == null) {
             synchronized (SimpleDBUtils.class){
                 if (sInstance == null) {
-                    sInstance = new SimpleDBUtils(context);
+                    sInstance = new SimpleDBUtils(MainApplication.getInstance());
                 }
             }
         }
@@ -35,9 +35,16 @@ public class SimpleDBUtils {
     }
 
     private SimpleDBUtils(Context context) {
+        if (context == null) {
+            throw new NullPointerException("context must not be null!");
+        }
         mSQLiteHelper = new PlaceDBHelper(context,"place.db", null,CURRENT_VERSION_DB);
         mContext = context;
         mDB = mSQLiteHelper.getWritableDatabase();
+    }
+
+    public SQLiteDatabase getDataBase() {
+        return mDB;
     }
 
 

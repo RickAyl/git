@@ -7,7 +7,7 @@
     android:clickable="true"
     android:orientation="horizontal">
     <androidx.cardview.widget.CardView
-        android:id="@+id/province_cardview"
+        android:id="@+id/city_cardview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:cardBackgroundColor="@android:color/darker_gray"

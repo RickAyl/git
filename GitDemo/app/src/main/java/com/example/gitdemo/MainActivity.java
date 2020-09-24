@@ -86,15 +86,17 @@ public class MainActivity extends AppCompatActivity {
         bindService(intent, connection, BIND_AUTO_CREATE);
     }
 
+    private MainService.MyBinder myBinder;
+
     private ServiceConnection connection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
-
+            myBinder = (MainService.MyBinder) service;
         }
 
         @Override
         public void onServiceDisconnected(ComponentName name) {
-
+            myBinder = null;
         }
     };
 

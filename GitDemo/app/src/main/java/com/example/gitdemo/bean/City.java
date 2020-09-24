@@ -1,11 +1,14 @@
 package com.example.gitdemo.bean;
 
+import com.google.gson.annotations.SerializedName;
+
 public class City {
 
     private int _id;
 
+    @SerializedName("name")
     private String cityName;
-
+    @SerializedName("id")
     private int cityCode;
 
     private int provinceId;

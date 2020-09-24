@@ -44,17 +44,36 @@ public class ProvinceAdapter extends RecyclerView.Adapter<ProvinceAdapter.ViewHo
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.province_item, parent, false);
         ViewHolder holder = new ViewHolder(view);
+
         return holder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Province province = mList.get(position);
-        holder.name.setText(province.getProvinceName());
+        holder.name.setText(province.getProvinceCode() + " : " + province.getProvinceName());
+        final int provinceCode = province.getProvinceCode();
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onClick(provinceCode);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return mList.size();
+    }
+
+
+    public void setOnItemClickListener(ItemClickListener listener) {
+        this.listener = listener;
+    }
+
+    private ItemClickListener listener;
+
+    public interface ItemClickListener {
+        void onClick(int provinceCode);
     }
 }
