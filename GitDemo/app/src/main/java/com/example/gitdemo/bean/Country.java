@@ -1,11 +1,17 @@
 package com.example.gitdemo.bean;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Country {
 
     private int _id;
 
+    @SerializedName("name")
     private String countryName;
+    @SerializedName("id")
+    private int countryCode;
 
+    @SerializedName("weather_id")
     private String weatherId;
 
     private int cityId;
@@ -40,5 +46,13 @@ public class Country {
 
     public void setCityId(int cityId) {
         this.cityId = cityId;
+    }
+
+    public int getCountryCode() {
+        return countryCode;
+    }
+
+    public void setCountryCode(int countryCode) {
+        this.countryCode = countryCode;
     }
 }

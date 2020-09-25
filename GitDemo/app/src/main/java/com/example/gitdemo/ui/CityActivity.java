@@ -6,8 +6,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.ContentUris;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.example.gitdemo.R;
@@ -51,6 +53,14 @@ public class CityActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(mAdapter);
         getCityDataFromDB();
+        mAdapter.setOnItemClickListener(new CityAdapter.ItemClickListener() {
+            @Override
+            public void onItemClick(int cityCode) {
+                Intent intent = new Intent(CityActivity.this, CountryActivity.class);
+                intent.putExtra("city_code", cityCode);
+                startActivity(intent);
+            }
+        });
     }
 
     private int getProvinceCode() {
@@ -64,17 +74,18 @@ public class CityActivity extends AppCompatActivity {
             Toast.makeText(this, "请求省份代码错误！", Toast.LENGTH_SHORT).show();
             finish();
         }
-        Cursor cr = getContentResolver().query(CONTENT_BASE_DB_CITY_URI, null, null, null, null);
-        if (cr == null) {
+        Cursor cr = getContentResolver().query(CONTENT_BASE_DB_CITY_URI, null, "province_id = ?", new String[]{String.valueOf(provinceCode)}, null);
+        Log.d("city", "getColumnCount" + cr.getColumnCount() + "getCount" +cr.getCount());
+        if (cr == null || cr.getCount() == 0) {
             getCityDataFromInternet(provinceCode);
             return;
         }
         cr.moveToFirst();
         do {
             City city = new City();
-            int province_id = cr.getInt(cr.getColumnIndex("province_id"));
             int cityCode = cr.getInt(cr.getColumnIndex("city_code"));
             String cityName = cr.getString(cr.getColumnIndex("city_name"));
+            int province_id = cr.getInt(cr.getColumnIndex("province_id"));
             city.setProvinceId(province_id);
             city.setCityCode(cityCode);
             city.setCityName(cityName);

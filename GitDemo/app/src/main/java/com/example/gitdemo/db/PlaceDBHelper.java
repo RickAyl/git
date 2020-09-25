@@ -21,6 +21,7 @@ public class PlaceDBHelper extends SQLiteOpenHelper {
 
     public static final String CREATE_COUNTRY_TABLE = "create table country ("
             + "_id integer primary key autoincrement, "
+            + "country_code interger, "
             + "country_name text, "
             + "weather_id text, "
             + "city_id integer)";
@@ -37,7 +38,14 @@ public class PlaceDBHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        //update db
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
+        //update db_table
+        if (newVersion == 2) {
+            sqLiteDatabase.execSQL("drop table if exists country");
+            sqLiteDatabase.execSQL(CREATE_COUNTRY_TABLE);
+        } else if (newVersion == 3) {
+            sqLiteDatabase.execSQL("drop table if exists country");
+            sqLiteDatabase.execSQL(CREATE_COUNTRY_TABLE);
+        }
     }
 }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,6 +21,8 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder> {
     List<City> mList;
 
     Context mContext;
+
+
 
     public CityAdapter(@NonNull List<City> list, @NonNull Context context) {
         this.mList = list;
@@ -53,11 +56,29 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull CityAdapter.ViewHolder holder, int position) {
         City city = mList.get(position);
         holder.name.setText(city.getCityCode() + " : " + city.getCityName());
-        final int provinceCode = city.getCityCode();
+        final int cityCode = city.getCityCode();
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null) {
+                    listener.onItemClick(cityCode);
+                }
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return mList.size();
+    }
+
+    private ItemClickListener listener;
+
+    public void setOnItemClickListener(ItemClickListener listener) {
+        this.listener = listener;
+    }
+
+    public interface ItemClickListener {
+        void onItemClick(int cityCode);
     }
 }

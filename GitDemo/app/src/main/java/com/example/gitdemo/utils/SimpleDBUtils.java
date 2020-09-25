@@ -6,14 +6,16 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import androidx.core.content.ContextCompat;
-
 import com.example.gitdemo.MainApplication;
 import com.example.gitdemo.db.PlaceDBHelper;
 
 public class SimpleDBUtils {
 
     private static final int CURRENT_VERSION_DB = 1;
+
+    private static final int CURRENT_VERSION_DB_2 = 2;
+
+    private static final int CURRENT_VERSION_DB_3 = 3;
 
     private SQLiteOpenHelper mSQLiteHelper;
 
@@ -38,7 +40,7 @@ public class SimpleDBUtils {
         if (context == null) {
             throw new NullPointerException("context must not be null!");
         }
-        mSQLiteHelper = new PlaceDBHelper(context,"place.db", null,CURRENT_VERSION_DB);
+        mSQLiteHelper = new PlaceDBHelper(context,"place.db", null,CURRENT_VERSION_DB_3);
         mContext = context;
         mDB = mSQLiteHelper.getWritableDatabase();
     }

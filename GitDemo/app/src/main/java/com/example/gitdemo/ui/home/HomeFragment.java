@@ -62,7 +62,7 @@ public class HomeFragment extends Fragment {
 
     private void getProvinceDataFromDB() {
         Cursor cr = getActivity().getContentResolver().query(BASE_URI, null, null, null, null);
-        if (cr == null) {
+        if (cr == null || cr.getCount() <= 0) {
             return;
         }
         cr.moveToFirst();
