@@ -7,9 +7,11 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.example.gitdemo.MainActivity;
+import com.example.gitdemo.bean.BasicData;
 import com.example.gitdemo.bean.City;
 import com.example.gitdemo.bean.Country;
 import com.example.gitdemo.bean.Province;
+import com.example.gitdemo.bean.Suggestion;
 import com.example.gitdemo.bean.Weather;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -132,6 +134,12 @@ x":"19","min":"13"}},{"date":"2020-09-29","cond":{"txt_d":"小雨"},"tmp":{"max"
         Gson gson = new Gson();
         Weather weather = gson.fromJson(gsonObjectStr, Weather.class);
         Log.d("tag", "weather suggestion : " + weather.getmSuggestion());
+        Log.d("tag", "weather msg : " + weather.getMsg());
+        BasicData basicData = weather.getmBasic();
+        Log.d("tag", "getAdmin_area : " + basicData.getAdmin_area());
+        Suggestion suggestion = weather.getmSuggestion();
+        Suggestion.Sport sport = suggestion.getSport();
+        Log.d("tag", "sport suggestion : " + sport.getTxt());
         return false;
     }
 

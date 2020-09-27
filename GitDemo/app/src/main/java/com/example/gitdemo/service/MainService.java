@@ -13,6 +13,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.example.gitdemo.MainApplication;
 import com.example.gitdemo.bean.Province;
 import com.example.gitdemo.utils.HttpUtil;
 import com.example.gitdemo.utils.SimpleDBUtils;
@@ -29,6 +30,8 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 public class MainService extends Service {
+
+    private MainApplication mMainApplication;
 
     public static final String TAG = MainService.class.getSimpleName();
 
@@ -64,6 +67,7 @@ public class MainService extends Service {
     public void onCreate() {
         super.onCreate();
         mService = this;
+        mMainApplication = MainApplication.getInstance();
         initHandler();
         mainServiceLog("onCreate");
     }
@@ -72,7 +76,13 @@ public class MainService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         mainServiceLog("onStartCommand");
         mSimpleDBUtils = SimpleDBUtils.getInstance();
-        requestInternet();
+        mMainApplication.getThreadPoolExecutor().execute(new Runnable() {
+            @Override
+            public void run() {
+                requestInternet();
+            }
+        });
+
         return super.onStartCommand(intent, flags, startId);
     }
 
@@ -81,7 +91,12 @@ public class MainService extends Service {
         mainServiceLog("onBind");
         mSimpleDBUtils = SimpleDBUtils.getInstance();
         mBinder = new MyBinder();
-        requestInternet();
+        mMainApplication.getThreadPoolExecutor().execute(new Runnable() {
+            @Override
+            public void run() {
+                requestInternet();
+            }
+        });
         return mBinder;
     }
 
