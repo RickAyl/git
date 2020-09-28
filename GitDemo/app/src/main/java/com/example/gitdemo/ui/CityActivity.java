@@ -1,6 +1,9 @@
 package com.example.gitdemo.ui;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,6 +13,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.gitdemo.R;
@@ -41,12 +45,21 @@ public class CityActivity extends AppCompatActivity {
 
     List<City> mList;
 
+    Toolbar mToolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_city);
 
         recyclerView = findViewById(R.id.city_list);
+
+        mToolbar = findViewById(R.id.toolbar);
+
+        setSupportActionBar(mToolbar);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         mList = new ArrayList<City>();
         mAdapter = new CityAdapter(mList, this);
@@ -61,6 +74,12 @@ public class CityActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        return true;
+        //return super.onOptionsItemSelected(item);
     }
 
     private int getProvinceCode() {

@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:focusable="true"
     android:clickable="true"
-    android:orientation="horizontal">
+    android:orientation="vertical">
     <androidx.cardview.widget.CardView
         android:id="@+id/province_cardview"
         android:layout_width="match_parent"
@@ -24,5 +24,10 @@
             android:gravity="center"/>
 
     </androidx.cardview.widget.CardView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"/>
 
 </LinearLayout>

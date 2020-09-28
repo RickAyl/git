@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.database.ContentObserver;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -11,8 +12,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Scroller;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,10 +23,13 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.gitdemo.MainActivity;
+import com.example.gitdemo.MainApplication;
 import com.example.gitdemo.R;
 import com.example.gitdemo.adapter.ProvinceAdapter;
 import com.example.gitdemo.bean.Province;
 import com.example.gitdemo.ui.CityActivity;
+import com.example.gitdemo.utils.ListenerInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +48,8 @@ public class HomeFragment extends Fragment {
 
     private List<Province> mProvinceList;
 
+
+
     private void initHandler() {
         mHandler = new Handler(getActivity().getMainLooper()) {
             @Override
@@ -52,6 +58,9 @@ public class HomeFragment extends Fragment {
                 switch (msg.what) {
                     case UPDATE_DATA_MSG:
                         getProvinceDataFromDB();
+                        break;
+                    case 1:
+                        ((MainActivity)(getActivity())).stopSwipeRefresh();
                         break;
                 }
             }
@@ -115,6 +124,26 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+
+            mProvinceListView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+                @Override
+                public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                    super.onScrollStateChanged(recyclerView, newState);
+                }
+
+                @Override
+                public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                    super.onScrolled(recyclerView, dx, dy);
+                    if (getActivity() instanceof MainActivity) {
+                        ((MainActivity) getActivity()).setSwipeEnable((recyclerView.getChildCount() == 0 || recyclerView.getChildAt(0).getTop() >= 0));
+                    }
+
+                }
+            });
+        }
     }
 
 
@@ -132,8 +161,38 @@ public class HomeFragment extends Fragment {
         });
     }
 
+    ListenerInterface.SwipeListener listener = new ListenerInterface.SwipeListener() {
+        @Override
+        public void onSwipe() {
+            Log.d("main", "MainActivity refresh!");
+            MainApplication.getInstance().getThreadPoolExecutor().execute(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    mHandler.sendEmptyMessageDelayed(1, 3000);
+                }
+            });
+        }
+    };
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        if (getActivity() instanceof MainActivity) {
+            ((MainActivity) getActivity()).setMainActivitySwipeListener(listener);
+        }
+
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (getActivity() instanceof MainActivity) {
+            ((MainActivity) getActivity()).removeMainActivitySwipeListener(listener);
+        }
     }
 }
