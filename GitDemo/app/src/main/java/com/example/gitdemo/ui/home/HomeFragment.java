@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.database.ContentObserver;
 import android.database.Cursor;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -12,7 +11,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Scroller;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -86,6 +84,7 @@ public class HomeFragment extends Fragment {
             pv.setProvinceCode(code);
             mProvinceList.add(pv);
         } while (cr.moveToNext());
+        cr.close();
         mAdapter.notifyDataSetChanged();
     }
 
@@ -126,24 +125,21 @@ public class HomeFragment extends Fragment {
         });
 
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        mProvinceListView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
 
-            mProvinceListView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-                @Override
-                public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
-                    super.onScrollStateChanged(recyclerView, newState);
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (getActivity() instanceof MainActivity) {
+                    ((MainActivity) getActivity()).setSwipeEnable((recyclerView.getChildCount() == 0 || recyclerView.getChildAt(0).getTop() >= 0));
                 }
 
-                @Override
-                public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                    super.onScrolled(recyclerView, dx, dy);
-                    if (getActivity() instanceof MainActivity) {
-                        ((MainActivity) getActivity()).setSwipeEnable((recyclerView.getChildCount() == 0 || recyclerView.getChildAt(0).getTop() >= 0));
-                    }
-
-                }
-            });
-        }
+            }
+        });
     }
 
 

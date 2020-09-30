@@ -19,7 +19,6 @@ public class MainApplication extends Application {
 
     private static final String TAG = MainApplication.class.getSimpleName();
 
-
     private ThreadPoolExecutor threadPoolExecutor;
 
     public static MainApplication mContext;

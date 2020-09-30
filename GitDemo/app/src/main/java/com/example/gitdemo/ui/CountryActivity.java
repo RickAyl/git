@@ -172,6 +172,11 @@ public class CountryActivity extends AppCompatActivity {
                             }
 
                             @Override
+                            public void onFinished(Object o) {
+
+                            }
+
+                            @Override
                             public void onError(Exception e) {
                                 e.printStackTrace();
                             }

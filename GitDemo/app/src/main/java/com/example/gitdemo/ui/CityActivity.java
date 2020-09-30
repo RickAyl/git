@@ -152,6 +152,11 @@ public class CityActivity extends AppCompatActivity {
                     }
 
                     @Override
+                    public void onFinished(Object o) {
+
+                    }
+
+                    @Override
                     public void onError(Exception e) {
 
                     }

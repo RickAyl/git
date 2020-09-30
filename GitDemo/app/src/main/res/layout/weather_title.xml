@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:orientation="horizontal"
+    android:background="@android:color/transparent">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="45dp"
+        android:layout_height="match_parent"
+        android:textAllCaps="false"
+        android:layout_marginStart="10dp"
+        android:layout_gravity="center_vertical"
+        android:background="@android:drawable/ic_menu_sort_by_size" />
+
+    <TextView
+        android:id="@+id/place_name"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_weight="1"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:layout_marginEnd="30dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="30dp"
+        android:text="香港 九龙" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center_vertical|right"
+        android:layout_marginEnd="10dp"
+        android:background="@android:drawable/ic_menu_share" />
+</LinearLayout>

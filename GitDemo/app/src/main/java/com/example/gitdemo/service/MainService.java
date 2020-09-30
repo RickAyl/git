@@ -142,7 +142,7 @@ public class MainService extends Service {
 
 
     private void requestInternet(){
-        //http://www.baidu.com http://guolin.tech/api/china
+        //http://guolin.tech/api/china
         HttpUtil.sendOkHttpRequest("http://guolin.tech/api/china", new Callback() {
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
@@ -166,14 +166,17 @@ public class MainService extends Service {
                                 values.put("province_code",province.getProvinceCode());
                                 getContentResolver().update(Uri.parse("content://com.example.gitdemo.provider/province"),
                                         values, "province_code = ?",new String[]{String.valueOf(province.getProvinceCode())});
-                                //mSimpleDBUtils.updateData(values,"province","province_code = ?",new String[]{String.valueOf(province.getProvinceCode())} );
                             }else {
                                 values.put("province_name",province.getProvinceName());
                                 values.put("province_code",province.getProvinceCode());
                                 getContentResolver().insert(Uri.parse("content://com.example.gitdemo.provider/province"), values);
-                                //mSimpleDBUtils.insertData(values, "province");
                             }
                         }
+                    }
+
+                    @Override
+                    public void onFinished(Province province) {
+
                     }
 
                     @Override

@@ -5,36 +5,36 @@ import com.google.gson.annotations.SerializedName;
 public class Weather {
 
     @SerializedName("basic")
-    private BasicData mBasic;
+    private BasicData basicData;
     @SerializedName("update")
-    private UpdateTime mUpdate;
+    private UpdateTime updateTime;
 
     private String status;
     @SerializedName("now")
-    private CurrentWeatherData mNow;
+    private CurrentWeatherData currentWeatherData;
     @SerializedName("daily_forecast")
-    private DailyForecast mDailyForecast[];
+    private DailyForecast dailyForecasts[];
     @SerializedName("aqi")
-    private Aqi mAqi;
+    private Aqi aqi;
     @SerializedName("suggestion")
-    private Suggestion mSuggestion;
+    private Suggestion suggestion;
 
     private String msg;
 
-    public BasicData getmBasic() {
-        return mBasic;
+    public BasicData getBasicData() {
+        return basicData;
     }
 
-    public void setmBasic(BasicData mBasic) {
-        this.mBasic = mBasic;
+    public void setBasicData(BasicData basicData) {
+        this.basicData = basicData;
     }
 
-    public UpdateTime getmUpdate() {
-        return mUpdate;
+    public UpdateTime getUpdateTime() {
+        return updateTime;
     }
 
-    public void setmUpdate(UpdateTime mUpdate) {
-        this.mUpdate = mUpdate;
+    public void setUpdateTime(UpdateTime updateTime) {
+        this.updateTime = updateTime;
     }
 
     public String getStatus() {
@@ -45,36 +45,36 @@ public class Weather {
         this.status = status;
     }
 
-    public CurrentWeatherData getmNow() {
-        return mNow;
+    public CurrentWeatherData getCurrentWeatherData() {
+        return currentWeatherData;
     }
 
-    public void setmNow(CurrentWeatherData mNow) {
-        this.mNow = mNow;
+    public void setCurrentWeatherData(CurrentWeatherData currentWeatherData) {
+        this.currentWeatherData = currentWeatherData;
     }
 
-    public DailyForecast[] getmDailyForecast() {
-        return mDailyForecast;
+    public DailyForecast[] getDailyForecasts() {
+        return dailyForecasts;
     }
 
-    public void setmDailyForecast(DailyForecast[] mDailyForecast) {
-        this.mDailyForecast = mDailyForecast;
+    public void setDailyForecasts(DailyForecast[] dailyForecasts) {
+        this.dailyForecasts = dailyForecasts;
     }
 
-    public Aqi getmAqi() {
-        return mAqi;
+    public Aqi getAqi() {
+        return aqi;
     }
 
-    public void setmAqi(Aqi mAqi) {
-        this.mAqi = mAqi;
+    public void setAqi(Aqi aqi) {
+        this.aqi = aqi;
     }
 
-    public Suggestion getmSuggestion() {
-        return mSuggestion;
+    public Suggestion getSuggestion() {
+        return suggestion;
     }
 
-    public void setmSuggestion(Suggestion mSuggestion) {
-        this.mSuggestion = mSuggestion;
+    public void setSuggestion(Suggestion suggestion) {
+        this.suggestion = suggestion;
     }
 
     public String getMsg() {
