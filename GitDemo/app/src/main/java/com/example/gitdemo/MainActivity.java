@@ -213,6 +213,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //add listener
     public void removeMainActivitySwipeListener(@NonNull ListenerInterface.SwipeListener listener) {
         if (mSwipeListenerList != null && mSwipeListenerList.contains(listener)) {
             mSwipeListenerList.remove(listener);
